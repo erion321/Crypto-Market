@@ -1,0 +1,25 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  gap: 1rem;
+
+  .search-table {
+    height: auto !important;
+  }
+
+  input {
+    width: 300px;
+    font-size: 18px;
+    padding: 6px 6px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    margin-top: 4rem;
+  }
+  input:focus {
+    border: 2px solid rgba(86, 189, 86, 0.408);
+  }
+}

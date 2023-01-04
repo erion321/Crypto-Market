@@ -1,0 +1,73 @@
+@import "../../index.scss";
+$breakpoints: (
+  "xs": 0,
+  "sm": 480px,
+  "md": 720px,
+  "lg": 960px,
+  "xl": 1200px,
+);
+
+@mixin xs {
+  @media (min-width: map-get($breakpoints, "xs")) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: map-get($breakpoints, "sm")) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: map-get($breakpoints, "md")) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: map-get($breakpoints, "lg")) {
+    @content;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 2rem;
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 18px;
+    gap: 0.8rem;
+    font-weight: bold;
+
+    @include xs {
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 1rem;
+      background-color: white;
+      padding: 0.56rem 1rem;
+      border-radius: 14px;
+      min-width: 180px;
+      background-color: $light-green;
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+
+      svg {
+        font-size: 20px;
+        color: rgb(2, 168, 2);
+      }
+    }
+  }
+}
