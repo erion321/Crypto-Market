@@ -3,8 +3,8 @@ import Table from "../Table";
 //Css file
 import "./Home.scss";
 //Hooks Redux Router
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getCoinData } from "../../features/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 //React Icons

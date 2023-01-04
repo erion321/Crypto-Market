@@ -79,12 +79,14 @@ export default function Portofolio() {
         <div>
           <Link to="/">
             <FaAngleDoubleLeft />
-          </Link>{" "}
+          </Link>
           <h3>Main Portofolio</h3>
         </div>
         <section>
           <h4 style={{ color: "gray" }}>Current Balance</h4>
-          <h2> US${parseFloat(currentBalance).toFixed(2)} </h2>
+          <h2>
+            US${numberWithCommas(parseFloat(currentBalance).toFixed(2))}
+          </h2>
         </section>
       </div>
       <article>
