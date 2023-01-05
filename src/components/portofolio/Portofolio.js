@@ -26,26 +26,29 @@ export default function Portofolio() {
    */
 
   let portofolioFiltered = portofolio.map((coin) => coin.coin.name);
-  let filteredCoinData = coinData.filter((item) => {
+  portofolioFiltered = coinData.filter((item) => {
     return portofolioFiltered.includes(item.name);
   });
 
   //We need to combine filtered data with the quantity from portofolio
 
-  let getQuantity = portofolio.map((coin) => coin.quantity);
-  const data = filteredCoinData.map((coin) => {
+  const getQuantity = portofolio.map((coin) => coin.quantity);
+  portofolioFiltered = portofolioFiltered.map((coin) => {
     return { coin: coin, quantity: getQuantity };
   });
 
+  console.log(portofolioFiltered);
+
   //Creating the total sum of are portofolio
 
-  const portofolioSum = data.map((coin, index) => {
+  let currentBalance = portofolioFiltered.map((coin, index) => {
     return coin.coin.price * coin.quantity[index];
   });
+  currentBalance = currentBalance.reduce(add, 0);
+
   function add(accumulator, a) {
     return accumulator + a;
   }
-  const currentBalance = portofolioSum.reduce(add, 0);
 
   useEffect(() => {
     localStorage.setItem("portofolio", JSON.stringify(portofolio));
@@ -84,9 +87,7 @@ export default function Portofolio() {
         </div>
         <section>
           <h4 style={{ color: "gray" }}>Current Balance</h4>
-          <h2>
-            US${numberWithCommas(parseFloat(currentBalance).toFixed(2))}
-          </h2>
+          <h2>US${numberWithCommas(parseFloat(currentBalance).toFixed(2))}</h2>
         </section>
       </div>
       <article>
@@ -98,7 +99,7 @@ export default function Portofolio() {
           <p>Price</p>
           <p>Holdings</p>
         </div>
-        {data.map((item, index) => {
+        {portofolioFiltered.map((item, index) => {
           const { coin, quantity } = item;
           return (
             <div className="table-main" key={index}>
@@ -159,3 +160,16 @@ export default function Portofolio() {
     </main>
   );
 }
+
+/*  let portofolioFiltered = portofolio.map((coin) => coin.coin.name);
+ let filteredCoinData = coinData.filter((item) => {
+   return portofolioFiltered.includes(item.name);
+ });
+
+ //We need to combine filtered data with the quantity from portofolio
+
+ let getQuantity = portofolio.map((coin) => coin.quantity);
+ const data = filteredCoinData.map((coin) => {
+   return { coin: coin, quantity: getQuantity };
+ });
+ */

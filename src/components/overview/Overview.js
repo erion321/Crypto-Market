@@ -7,8 +7,8 @@ export default function Overview() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const myCoin = localStorage.getItem("myCoin");
-  const specificCoin = JSON.parse(myCoin);
+  let specificCoin = localStorage.getItem("myCoin");
+  specificCoin = JSON.parse(specificCoin);
 
   return (
     <section>
@@ -17,28 +17,29 @@ export default function Overview() {
         <h4> {specificCoin.symbol} </h4>
       </header>
       <main>
-        <div>
-          <form>
-            <input
-              onChange={(e) => dispatch(addQuantity(e.target.value))}
-              type="number"
-              step=".01"
-            />
-          </form>
+        <form>
+          <input
+            onChange={(e) => dispatch(addQuantity(e.target.value))}
+            type="number"
+            step=".01"
+          />
           <h4>{specificCoin.symbol}</h4>
-        </div>
-        <p>
-          US$ <span> {parseFloat(specificCoin.price).toFixed(4)} </span>per coin
-        </p>
+          <p>
+            US$ <span> {parseFloat(specificCoin.price).toFixed(4)} </span>per
+            coin
+          </p>
+          <button
+            type="submit"
+            onClick={() => {
+              dispatch(addNewTransaction());
+              navigate("/portofolioPage");
+            }}
+          >
+            Add Transaction To Portofolio
+          </button>
+        </form>
       </main>
-      <button
-        onClick={() => {
-          dispatch(addNewTransaction());
-          navigate("/portofolioPage");
-        }}
-      >
-        Add Transaction To Portofolio
-      </button>
+
       <article>
         <h2>Statistics</h2>
       </article>
