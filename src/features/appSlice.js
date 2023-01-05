@@ -68,10 +68,15 @@ const appSlice = createSlice({
       let existingItem = state.portofolio.find(
         (item) => item.coin.name == state.specificCoin.name
       );
+      console.log(existingItem);
 
       if (existingItem) {
-        existingItem.quantity =
+        const addQuantity =
           Number(existingItem.quantity) + Number(state.quantity);
+
+        existingItem.quantity = (Math.round(addQuantity * 100) / 100).toFixed(
+          2
+        );
       } else {
         let newCoin = {
           coin: state.specificCoin,
