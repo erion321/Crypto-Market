@@ -18,9 +18,11 @@ export default function Watchlist() {
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }, [watchlist]);
 
-  if (watchlist.length < 0) {
+  console.log(watchlist.length)
+
+  if (watchlist.length < 1) {
     return (
-      <div>
+      <div className="add-item">
         <button onClick={() => navigate("/")}>Add item to watchlist</button>
       </div>
     );

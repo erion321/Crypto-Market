@@ -1,13 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addSpecificCoin, addToWatchlist } from "../features/appSlice";
+import { addToWatchlist } from "../features/appSlice";
 import "./Table.scss";
 //React Icons
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 
 export default function Table({
-  iconUrl,
+  iconUrl,  
   name,
   change,
   rank,
@@ -17,7 +16,6 @@ export default function Table({
   coin,
 }) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   function nFormatter(num) {
     if (num >= 1000000000) {
@@ -38,13 +36,7 @@ export default function Table({
 
   return (
     <>
-      <div
-        onClick={() => {
-          navigate(`/${coin.name}`);
-          dispatch(addSpecificCoin(coin));
-        }}
-        className="Td"
-      >
+      <div className="Td">
         <img src={iconUrl} alt={name} />
         <div className="coin-details">
           <p>{name}</p>
@@ -77,7 +69,9 @@ export default function Table({
           </p>
         </div>
         <button
-          onClick={() => dispatch(addToWatchlist(coin))}
+          onClick={(event) =>
+            dispatch(addToWatchlist({ coin: coin, event: event }))
+          }
           className="star-btn"
         >
           <AiOutlineStar />

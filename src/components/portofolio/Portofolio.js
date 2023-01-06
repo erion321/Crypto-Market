@@ -160,16 +160,3 @@ export default function Portofolio() {
     </main>
   );
 }
-
-/*  let portofolioFiltered = portofolio.map((coin) => coin.coin.name);
- let filteredCoinData = coinData.filter((item) => {
-   return portofolioFiltered.includes(item.name);
- });
-
- //We need to combine filtered data with the quantity from portofolio
-
- let getQuantity = portofolio.map((coin) => coin.quantity);
- const data = filteredCoinData.map((coin) => {
-   return { coin: coin, quantity: getQuantity };
- });
- */

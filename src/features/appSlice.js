@@ -53,15 +53,16 @@ const appSlice = createSlice({
       state.quantity = action.payload;
     },
     addToWatchlist: (state, action) => {
-      console.log(action);
+      action.payload.event.stopPropagation();
+
       let existingItem = state.watchlist.find(
-        (item) => item.name == action.payload.name
+        (item) => item.name == action.payload.coin.name
       );
 
       if (existingItem) {
         return;
       } else {
-        state.watchlist = [...state.watchlist, action.payload];
+        state.watchlist = [...state.watchlist, action.payload.coin];
       }
     },
     addNewTransaction: (state, action) => {

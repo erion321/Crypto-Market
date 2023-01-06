@@ -1,13 +1,40 @@
-.watchlist {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    padding-top: 3rem;
-    
-    .Table {
-        height: auto;
+.add-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  button {
+    background-color: rgb(50, 122, 122);
+    border: none;
+    border-radius: 4px;
+    width: 150px;
+    padding: 0.5rem;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: 0.4s ease;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+
+    &:hover {
+      color: rgb(50, 122, 122);
+      background-color: white;
+      transition: 0.4s ease;
+      outline: 1px solid rgb(50, 122, 122);
     }
+  }
+}
+
+.watchlist {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding-top: 3rem;
+
+  .Table {
+    height: auto;
+  }
 }

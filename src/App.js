@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import Search from "./components/search/Search";
 import Overview from "./components/overview/Overview";
@@ -9,7 +9,7 @@ export default function App() {
   return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index path="/" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/portofolioPage" element={<Portofolio />} />
         <Route path="/watchlistPage" element={<Watchlist />} />
