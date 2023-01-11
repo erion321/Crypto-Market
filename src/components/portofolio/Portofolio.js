@@ -87,7 +87,7 @@ export default function Portofolio() {
         </div>
         <section>
           <h4 style={{ color: "gray" }}>Current Balance</h4>
-          <h2>US${numberWithCommas(parseFloat(currentBalance).toFixed(2))}</h2>
+          <h2>US${numberWithCommas(parseFloat(currentBalance).toFixed(3))}</h2>
         </section>
       </div>
       <article>
@@ -116,7 +116,7 @@ export default function Portofolio() {
               </div>
               <div style={{ alignItems: "center" }} className="coin">
                 <p style={{ fontWeight: "bold" }}>
-                  US${numberWithCommas(parseFloat(coin.price).toFixed(2))}
+                  US${numberWithCommas(parseFloat(coin.price).toFixed(3))}
                 </p>
                 <p
                   className="priceChange"
@@ -143,7 +143,7 @@ export default function Portofolio() {
                 <p style={{ fontWeight: "bold" }}>
                   US$
                   {numberWithCommas(
-                    parseFloat(coin.price * quantity[index]).toFixed(2)
+                    parseFloat(coin.price * quantity[index]).toFixed(3)
                   )}
                 </p>
                 <p style={{ color: "gray" }}>

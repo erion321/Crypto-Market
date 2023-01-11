@@ -62,7 +62,7 @@ export default function Table({
       <div style={{ display: "flex", gap: "0.4rem" }}>
         <div>
           <p style={{ fontWeight: "bold" }}>
-            US$ {numberWithCommas(parseFloat(price).toFixed(2))}
+            US$ {numberWithCommas(parseFloat(price).toFixed(3))}
           </p>
           <p style={{ color: "gray", fontSize: "16px" }}>
             MCap {nFormatter(marketCap)}
