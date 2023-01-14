@@ -22,6 +22,9 @@ export default function Home() {
 
   return (
     <section className="container">
+      <h1>
+        Crypto Market
+      </h1>
       <nav>
         <Link to="/portofolioPage">
           <FaWallet />

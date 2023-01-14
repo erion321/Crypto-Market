@@ -52,6 +52,16 @@ const appSlice = createSlice({
     addQuantity: (state, action) => {
       state.quantity = action.payload;
     },
+    removeFromPortofolio: (state, action) => {
+      state.portofolio = state.portofolio.filter((item) => {
+        return item.coin.name != action.payload.coin.name;
+      });
+    },
+    removeFromWatchlist: (state, action) => {
+      state.watchlist = state.watchlist.filter((coin) => {
+        return coin.name != action.payload.name;
+      });
+    },
     addToWatchlist: (state, action) => {
       action.payload.event.stopPropagation();
 
@@ -114,6 +124,8 @@ export const {
   addNewTransaction,
   addQuantity,
   addToWatchlist,
+  removeFromPortofolio,
+  removeFromWatchlist,
 } = appSlice.actions;
 
 export default appSlice.reducer;

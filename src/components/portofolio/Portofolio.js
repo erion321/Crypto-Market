@@ -1,6 +1,6 @@
 import "./Portofolio.scss";
 import { useState } from "react";
-import { getCoinData } from "../../features/appSlice";
+import { removeFromPortofolio, getCoinData } from "../../features/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import { FaAngleDoubleLeft } from "react-icons/fa";
 
 export default function Portofolio() {
   const [isSearching, setIsSearching] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const { portofolio, coinData } = useSelector((store) => store.app);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,8 +38,6 @@ export default function Portofolio() {
     return { coin: coin, quantity: getQuantity };
   });
 
-  console.log(portofolioFiltered);
-
   //Creating the total sum of are portofolio
 
   let currentBalance = portofolioFiltered.map((coin, index) => {
@@ -49,6 +48,8 @@ export default function Portofolio() {
   function add(accumulator, a) {
     return accumulator + a;
   }
+
+  //Deleting items from portofolio
 
   useEffect(() => {
     localStorage.setItem("portofolio", JSON.stringify(portofolio));
@@ -64,10 +65,13 @@ export default function Portofolio() {
 
   if (portofolio.length < 1) {
     return (
-      <div>
+      <div className="empty-portofolio">
+        <Link to="/" className="home-link">
+          <FaAngleDoubleLeft />
+        </Link>
         <div>
           <h2>Yor portofolio is empty</h2>
-          <p>Add the first transaction by tappimg on the button below</p>
+          <h4>Add the first transaction by tapping on the button below</h4>
         </div>
         <button onClick={() => setIsSearching(true)}>
           Add New Transaction
@@ -80,7 +84,7 @@ export default function Portofolio() {
     <main className="portofolio">
       <div className="header">
         <div>
-          <Link to="/">
+          <Link to="/" className="home-link">
             <FaAngleDoubleLeft />
           </Link>
           <h3>Main Portofolio</h3>
@@ -93,6 +97,9 @@ export default function Portofolio() {
       <article>
         <header>
           <h3>Your Assets</h3>
+          <button onClick={() => setIsDeleting(!isDeleting)}>
+            Delete Item
+          </button>
         </header>
         <div className="table-head">
           <p>Asset</p>
@@ -140,15 +147,23 @@ export default function Portofolio() {
                 </p>
               </div>
               <div className="coin">
-                <p style={{ fontWeight: "bold" }}>
-                  US$
-                  {numberWithCommas(
-                    parseFloat(coin.price * quantity[index]).toFixed(3)
-                  )}
-                </p>
-                <p style={{ color: "gray" }}>
-                  {coin.symbol} {quantity[index]}
-                </p>
+                {isDeleting ? (
+                  <button onClick={() => dispatch(removeFromPortofolio(item))}>
+                    Delete
+                  </button>
+                ) : (
+                  <>
+                    <p style={{ fontWeight: "bold" }}>
+                      US$
+                      {numberWithCommas(
+                        parseFloat(coin.price * quantity[index]).toFixed(3)
+                      )}
+                    </p>
+                    <p style={{ color: "gray" }}>
+                      {coin.symbol} {quantity[index]}
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           );
