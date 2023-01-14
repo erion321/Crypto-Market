@@ -1,11 +1,12 @@
 import "./Watchlist.scss";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { getCoinData, removeFromWatchlist } from "../../features/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 //React Icons
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
+import { FaAngleDoubleLeft } from "react-icons/fa";
 
 export default function Watchlist() {
   const { watchlist } = useSelector((store) => store.app);
@@ -36,11 +37,12 @@ export default function Watchlist() {
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }, [watchlist]);
 
-  console.log(watchlist.length);
-
   if (watchlist.length < 1) {
     return (
       <div className="add-item">
+        <Link to="/" className="home-link">
+          <FaAngleDoubleLeft />
+        </Link>
         <button onClick={() => navigate("/")}>Add item to watchlist</button>
       </div>
     );
@@ -48,6 +50,9 @@ export default function Watchlist() {
 
   return (
     <div className="watchlist">
+      <Link to="/" className="home-link">
+        <FaAngleDoubleLeft />
+      </Link>
       <h2>My Watchlist</h2>
       <article>
         {watchlist.map((coin, index) => {

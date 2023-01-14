@@ -8,7 +8,6 @@ import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 
 export default function Portofolio() {
-  const [isSearching, setIsSearching] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const { portofolio, coinData } = useSelector((store) => store.app);
   const dispatch = useDispatch();
@@ -49,19 +48,13 @@ export default function Portofolio() {
     return accumulator + a;
   }
 
-  //Deleting items from portofolio
-
-  useEffect(() => {
-    localStorage.setItem("portofolio", JSON.stringify(portofolio));
-  }, [portofolio]);
-
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  if (isSearching === true) {
-    navigate("/search");
-  }
+  useEffect(() => {
+    localStorage.setItem("portofolio", JSON.stringify(portofolio));
+  }, [portofolio]);
 
   if (portofolio.length < 1) {
     return (
@@ -73,7 +66,7 @@ export default function Portofolio() {
           <h2>Yor portofolio is empty</h2>
           <h4>Add the first transaction by tapping on the button below</h4>
         </div>
-        <button onClick={() => setIsSearching(true)}>
+        <button onClick={() => navigate("/search")}>
           Add New Transaction
         </button>
       </div>

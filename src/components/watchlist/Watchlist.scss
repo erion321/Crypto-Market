@@ -3,6 +3,14 @@
   align-items: center;
   justify-content: center;
   height: 40vh;
+
+  .home-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    color: black;
+    font-size: 20px;
+  }
   button {
     background-color: rgb(50, 122, 122);
     border: none;
@@ -34,8 +42,15 @@
   height: auto;
   padding-top: 3rem;
 
+  .home-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    color: black;
+    font-size: 20px;
+  }
+
   article {
-    width: 80%;
     border-radius: 1rem;
     background-color: white;
     padding: 1rem;
