@@ -24,6 +24,7 @@ const initialState = {
   specificCoin: "",
   quantity: 0,
   watchlist: getWatchlist(),
+  loading: true,
 };
 
 const API_URL =
@@ -79,7 +80,6 @@ const appSlice = createSlice({
       let existingItem = state.portofolio.find(
         (item) => item.coin.name == state.specificCoin.name
       );
-      console.log(existingItem);
 
       if (existingItem) {
         const addQuantity =
@@ -112,6 +112,7 @@ const appSlice = createSlice({
               .includes(action.meta.arg.search.toLowerCase())
           ));
         } else if (action.meta.arg === "home") {
+          state.loading = false;
           return void (state.coinData = action.payload.data.coins);
         }
       })

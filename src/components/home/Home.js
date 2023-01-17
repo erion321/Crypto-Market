@@ -10,9 +10,10 @@ import { useDispatch, useSelector } from "react-redux";
 //React Icons
 import { FaExchangeAlt, FaWallet, FaSearch } from "react-icons/fa";
 import { AiFillStar } from "react-icons/ai";
+import Loading from "../Loading";
 
 export default function Home() {
-  const { coinData } = useSelector((store) => store.app);
+  const { coinData, loading } = useSelector((store) => store.app);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,11 +21,11 @@ export default function Home() {
     dispatch(getCoinData("home"));
   }, []);
 
+  console.log(loading);
+
   return (
     <section className="container">
-      <h1>
-        Crypto Market
-      </h1>
+      <h1>Crypto Market</h1>
       <nav>
         <Link to="/portofolioPage">
           <FaWallet />
@@ -43,7 +44,7 @@ export default function Home() {
           Watchlist
         </Link>
       </nav>
-      {coinData.length > 0 && (
+      {loading ? <Loading /> : coinData.length > 0 && (
         <div className="Table">
           <div className="Tbody">
             {coinData.map((coin, index) => {

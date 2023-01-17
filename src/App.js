@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import Search from "./components/search/Search";
 import Overview from "./components/overview/Overview";

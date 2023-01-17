@@ -26,12 +26,12 @@ export default function Portofolio() {
    */
 
   let portofolioFiltered = portofolio.map((coin) => coin.coin.name);
+
   portofolioFiltered = coinData.filter((item) => {
     return portofolioFiltered.includes(item.name);
   });
 
   //We need to combine filtered data with the quantity from portofolio
-
   const getQuantity = portofolio.map((coin) => coin.quantity);
   portofolioFiltered = portofolioFiltered.map((coin) => {
     return { coin: coin, quantity: getQuantity };
@@ -52,10 +52,6 @@ export default function Portofolio() {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  useEffect(() => {
-    localStorage.setItem("portofolio", JSON.stringify(portofolio));
-  }, [portofolio]);
-
   if (portofolio.length < 1) {
     return (
       <div className="empty-portofolio">
@@ -66,9 +62,7 @@ export default function Portofolio() {
           <h2>Yor portofolio is empty</h2>
           <h4>Add the first transaction by tapping on the button below</h4>
         </div>
-        <button onClick={() => navigate("/search")}>
-          Add New Transaction
-        </button>
+        <button onClick={() => navigate("/search")}>Add New Transaction</button>
       </div>
     );
   }

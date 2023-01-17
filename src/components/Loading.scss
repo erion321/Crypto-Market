@@ -1,0 +1,23 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 90%;
+  height: 400px;
+  padding-top: 2rem;
+
+  .spinner {
+    height: 80px;
+    width: 80px;
+    border: 6px solid rgb(7, 151, 177);
+    border-color: rgb(7, 151, 177) transparent rgb(7, 151, 177) transparent;
+    border-radius: 50%;
+    animation: spin 1.3s linear infinite;
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
