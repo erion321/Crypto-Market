@@ -17,6 +17,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //Callin API
   useEffect(() => {
     dispatch(getCoinData("home"));
   }, []);
@@ -44,25 +45,29 @@ export default function Home() {
           Watchlist
         </Link>
       </nav>
-      {loading ? <Loading /> : coinData.length > 0 && (
-        <div className="Table">
-          <div className="Tbody">
-            {coinData.map((coin, index) => {
-              return (
-                <article
-                  key={index}
-                  className="Tr"
-                  onClick={() => {
-                    navigate(`/${coin.name}`);
-                    dispatch(addSpecificCoin(coin));
-                  }}
-                >
-                  <Table {...coin} coin={coin} />
-                </article>
-              );
-            })}
+      {loading ? (
+        <Loading />
+      ) : (
+        coinData.length > 0 && (
+          <div className="Table">
+            <div className="Tbody">
+              {coinData.map((coin, index) => {
+                return (
+                  <article
+                    key={index}
+                    className="Tr"
+                    onClick={() => {
+                      navigate(`/${coin.name}`);
+                      dispatch(addSpecificCoin(coin));
+                    }}
+                  >
+                    <Table {...coin} coin={coin} />
+                  </article>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )
       )}
     </section>
   );

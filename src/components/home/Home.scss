@@ -1,35 +1,4 @@
 @import "../../index.scss";
-$breakpoints: (
-  "xs": 0,
-  "sm": 480px,
-  "md": 720px,
-  "lg": 960px,
-  "xl": 1200px,
-);
-
-@mixin xs {
-  @media (min-width: map-get($breakpoints, "xs")) {
-    @content;
-  }
-}
-
-@mixin sm {
-  @media (min-width: map-get($breakpoints, "sm")) {
-    @content;
-  }
-}
-
-@mixin md {
-  @media (min-width: map-get($breakpoints, "md")) {
-    @content;
-  }
-}
-
-@mixin lg {
-  @media (min-width: map-get($breakpoints, "lg")) {
-    @content;
-  }
-}
 
 .container {
   display: flex;
@@ -39,6 +8,11 @@ $breakpoints: (
   height: 100vh;
   gap: 2rem;
 
+  @include md {
+    width: 70%;
+    margin: 0 auto;
+  }
+
   nav {
     display: flex;
     flex-wrap: wrap;
@@ -46,9 +20,6 @@ $breakpoints: (
     font-size: 18px;
     gap: 0.8rem;
     font-weight: bold;
-
-    @include xs {
-    }
 
     a {
       display: flex;

@@ -1,8 +1,16 @@
+@import "../../index.scss";
+
 .overview {
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @include md {
+    width: 70%;
+    margin: 0 auto;
+  }
+
   header {
     display: flex;
     gap: 1rem;

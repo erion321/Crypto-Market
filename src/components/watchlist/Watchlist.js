@@ -29,14 +29,18 @@ export default function Watchlist() {
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
+  //Calling API
   useEffect(() => {
     dispatch(getCoinData({}));
   }, []);
 
+  //Saving watchlist array to local storage
   useEffect(() => {
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
   }, [watchlist]);
 
+  //If watchlist array is empty we want to show a differnt component
   if (watchlist.length < 1) {
     return (
       <div className="add-item">
@@ -65,7 +69,6 @@ export default function Watchlist() {
                   <div>
                     <p className="coin-symbol">{coin.symbol}</p>
                     <span className="coin-mCap">
-                      {" "}
                       {nFormatter(coin.marketCap)}{" "}
                     </span>
                   </div>

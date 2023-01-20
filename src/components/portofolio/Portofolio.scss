@@ -1,3 +1,5 @@
+@import "../../index.scss";
+
 .empty-portofolio {
   display: flex;
   flex-direction: column;
@@ -5,6 +7,11 @@
   justify-content: center;
   gap: 1rem;
   height: 30vh;
+
+  @include md {
+    width: 70%;
+    margin: 0 auto;
+  }
 
   .home-link {
     position: fixed;
@@ -49,6 +56,11 @@
   background-color: rgb(241, 235, 235);
   width: 100%;
   position: relative;
+
+  @include md {
+    width: 70%;
+    margin: 0 auto;
+  }
 
   .header {
     display: flex;

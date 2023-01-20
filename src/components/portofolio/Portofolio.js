@@ -8,11 +8,13 @@ import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import { FaAngleDoubleLeft } from "react-icons/fa";
 
 export default function Portofolio() {
+  //Showing the delete button on the coins
   const [isDeleting, setIsDeleting] = useState(false);
   const { portofolio, coinData } = useSelector((store) => store.app);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //CAlling API
   useEffect(() => {
     dispatch(getCoinData("home"));
   }, []);
@@ -42,11 +44,12 @@ export default function Portofolio() {
   let currentBalance = portofolioFiltered.map((coin, index) => {
     return coin.coin.price * coin.quantity[index];
   });
-  currentBalance = currentBalance.reduce(add, 0);
 
   function add(accumulator, a) {
     return accumulator + a;
   }
+
+  currentBalance = currentBalance.reduce(add, 0);
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

@@ -1,3 +1,6 @@
+@import "../../index.scss";
+
+
 .search {
   display: flex;
   flex-direction: column;
@@ -5,6 +8,11 @@
   justify-content: center;
   height: auto;
   gap: 1rem;
+
+ @include md {
+    width: 70%;
+    margin: 0 auto;
+  }
 
   .search-table {
     height: auto !important;

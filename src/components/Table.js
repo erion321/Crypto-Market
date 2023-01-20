@@ -6,7 +6,8 @@ import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import { AiOutlineStar } from "react-icons/ai";
 
 export default function Table({
-  iconUrl,  
+  //Coin properties that we get from the component where the Table is called
+  iconUrl,
   name,
   change,
   rank,
@@ -17,6 +18,7 @@ export default function Table({
 }) {
   const dispatch = useDispatch();
 
+  //Shorting numbers ex. 1000 to 1k
   function nFormatter(num) {
     if (num >= 1000000000) {
       return (num / 1000000000).toFixed(1).replace(/\.0$/, "") + "Bn";
@@ -30,6 +32,7 @@ export default function Table({
     return num;
   }
 
+  //Adding comma to numbers ex. 1000 to 1,000
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -70,6 +73,7 @@ export default function Table({
         </div>
         <button
           onClick={(event) =>
+            //Sendint data to appSlice so we can add coin to watchlist if we want to
             dispatch(addToWatchlist({ coin: coin, event: event }))
           }
           className="star-btn"

@@ -1,3 +1,5 @@
+@import "../index.scss";
+
 .loading {
   display: flex;
   justify-content: center;
@@ -5,6 +7,11 @@
   width: 90%;
   height: 400px;
   padding-top: 2rem;
+
+  @include md {
+    width: 70%;
+    margin: 0 auto;
+  }
 
   .spinner {
     height: 80px;

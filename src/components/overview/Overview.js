@@ -8,10 +8,10 @@ import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 
 export default function Overview() {
   const { quantity } = useSelector((store) => store.app);
-  console.log(quantity);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //Saving specific coin to local storage
   let specificCoin = localStorage.getItem("myCoin");
   specificCoin = JSON.parse(specificCoin);
 

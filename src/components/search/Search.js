@@ -7,11 +7,13 @@ import { addSpecificCoin } from "../../features/appSlice";
 import { useNavigate } from "react-router-dom";
 
 export default function Wallet() {
+  //Input value that we need for filtering data
   const [search, setSearch] = useState("");
   const { coinData } = useSelector((store) => store.app);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //Calling the API
   useEffect(() => {
     dispatch(getCoinData({ search: search, key: "search" }));
   }, [search]);
@@ -34,11 +36,14 @@ export default function Wallet() {
                 <article
                   key={index}
                   onClick={() => {
+                    //Redirecting to overview page
                     navigate(`/${coin.name}`);
+                    //Pasing coin we clicked so we can store it to specificCoin state
                     dispatch(addSpecificCoin(coin));
                   }}
                   className="Tr"
                 >
+                  {/* Passing coin properties to table component */}
                   <Table {...coin} coin={coin} />
                 </article>
               );
