@@ -14,7 +14,7 @@ export default function Portofolio() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //CAlling API
+  //Calling API
   useEffect(() => {
     dispatch(getCoinData("home"));
   }, []);
@@ -40,7 +40,6 @@ export default function Portofolio() {
   });
 
   //Creating the total sum of are portofolio
-
   let currentBalance = portofolioFiltered.map((coin, index) => {
     return coin.coin.price * coin.quantity[index];
   });
