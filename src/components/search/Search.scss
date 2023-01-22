@@ -1,6 +1,5 @@
 @import "../../index.scss";
 
-
 .search {
   display: flex;
   flex-direction: column;
@@ -9,7 +8,7 @@
   height: auto;
   gap: 1rem;
 
- @include md {
+  @include md {
     width: 70%;
     margin: 0 auto;
   }
@@ -19,15 +18,23 @@
   }
 
   input {
-    width: 300px;
+    width: 350px;
+    height: 45px;
     font-size: 18px;
     padding: 6px 6px;
     outline: none;
     border: none;
     border-radius: 8px;
     margin-top: 4rem;
+    border: 2px solid transparent;
+    transition: 0.5s ease;
+
+    @include md {
+      width: 450px;
+    }
   }
   input:focus {
     border: 2px solid rgba(86, 189, 86, 0.408);
+    transition: 0.5s ease;
   }
 }

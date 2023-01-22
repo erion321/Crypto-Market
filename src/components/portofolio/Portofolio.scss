@@ -53,7 +53,6 @@
 .portofolio {
   padding: 1rem;
   height: auto;
-  background-color: rgb(241, 235, 235);
   width: 100%;
   position: relative;
 
@@ -179,6 +178,11 @@
       color: rgb(50, 122, 122);
       border-color: rgb(50, 122, 122);
       transition: 0.5s ease;
+    }
+
+    @include md {
+      width: 40%;
+      margin: 0 auto;
     }
   }
 }
